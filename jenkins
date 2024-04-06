@@ -37,21 +37,21 @@ pipeline {
                     sh "sudo tar -xzf tomcat.tar.gz -C /home/centos/"
 
                     // Create the target directory if it doesn't exist
-                    sh "sudo mkdir -p /home/centos/apache-tomcat-7.0.94/webapps/"
+                   // sh "sudo mkdir -p /home/centos/apache-tomcat-7.0.94/webapps/"
 
                     // Remove existing WAR files
-                    sh "sudo rm -rf /home/centos/apache-tomcat-7.0.94/webapps/*.war"
+                    //sh "sudo rm -rf /home/centos/apache-tomcat-7.0.94/webapps/*.war"
 
                     unstash "Jenkinscicdfinal"
 
                     // Move the WAR file to the target directory
-                    sh "sudo mv target/*.war /home/centos/apache-tomcat-7.0.94/webapps/"
+                    sh "sudo mv target/*.war /home/centos/apache-tomcat-8.5.99/webapps"
 
                     // Reload systemd daemon
                     sh "sudo systemctl daemon-reload"
 
                     // Restart Tomcat
-                   sh "sudo /home/centos/apache-tomcat-7.0.94/bin/startup.sh"
+                   sh "sudo /home/centos/apache-tomcat-8.5.99/bin/startup.sh"
 
                 }
             }
